@@ -92,43 +92,50 @@ main {
 #bookingForm {
     position: fixed;
     top: 0;
-    right: -100%;
+    right: 0;
     width: 100%;
     max-width: 400px;
     height: 100%;
     background: white;
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-    transition: right 0.3s ease;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1000;
 }
 
 #bookingForm.show {
-    right: 0;
+    transform: translateX(0);
 }
 
 .form-container {
-    padding: 20px;
+    padding: 25px;
     position: relative;
 }
 
 #closeForm {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 15px;
+    right: 15px;
     cursor: pointer;
     font-size: 24px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+#closeForm:hover {
+    color: #d9534f;
 }
 
 /* Form Styling */
 form {
     display: flex;
     flex-direction: column;
+    gap: 12px;
 }
 
 form label {
     font-weight: bold;
     color: #343a40;
-    margin-bottom: 5px;
     font-size: 14px;
     text-align: left;
 }
@@ -136,7 +143,6 @@ form label {
 form input, form select {
     width: 100%;
     padding: 10px;
-    margin-bottom: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 14px;
@@ -159,9 +165,27 @@ form button {
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease-in-out;
 }
 
 form button:hover {
     background-color: #218838;
+}
+
+.booking-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 999;
+}
+
+.booking-backdrop.show {
+    opacity: 1;
+    visibility: visible;
 }
